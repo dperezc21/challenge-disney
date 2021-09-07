@@ -65,4 +65,15 @@ public class PeliculaSerieController {
 	}
 	
 	
+	@RequestMapping(value = "movies/desc")
+	public List<PeliculaSerie> getPeliculaSerieDesc(){
+		return inyeccion.getDesc();
+	}
+	
+	@RequestMapping(value = "movies/asc")
+	public List<PeliculaSerie> getPeliculaSerieAsc(){
+		return inyeccion.getAsc();
+	}
+	
+	
 }

@@ -18,8 +18,7 @@ async function login(){
 	const response = await request.text();
 	if (response != ""){
 		localStorage.token = response;
-		//localStorage.email = datos.correo;
-		location.href = "gestionPersonaje.html";
+		location.href = "indexUsuario.html";
 	}else{
 		alert("El correo o contraseña son incorrectos");
 	}

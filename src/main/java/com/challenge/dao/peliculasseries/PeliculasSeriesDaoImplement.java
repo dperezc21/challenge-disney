@@ -64,7 +64,23 @@ public class PeliculasSeriesDaoImplement implements PeliculasSeriesDao {
 		return p;
 	}
 
+	
+	@Override
+	public List<PeliculaSerie> getAsc() {
+		
+		String query = "FROM PeliculaSerie ORDER BY id ASC ";
+		List<PeliculaSerie> p = entityManager.createQuery(query).getResultList();
+		return p;
+	}
 
+
+	@Override
+	public List<PeliculaSerie> getDesc(){
+		String query ="FROM PeliculaSerie ORDER BY id DESC";
+		List<PeliculaSerie> p = entityManager.createQuery(query).getResultList();
+		return p;
+		
+	}
 
 	
 }

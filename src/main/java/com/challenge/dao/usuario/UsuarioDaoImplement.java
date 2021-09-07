@@ -35,6 +35,13 @@ public class UsuarioDaoImplement implements UsuarioDao {
 	public void guardarUsuario(Usuario usuario) {
 		entityManager.merge(usuario);
 	}
+	
+	
+	@Override
+	public Usuario buscarUsuarioPorId(String id) {
+		String query = "FROM Usuario where id= :id";
+		return (Usuario)entityManager.createQuery(query).setParameter("id", id).getResultList();
+	}
 
 
 	@Override

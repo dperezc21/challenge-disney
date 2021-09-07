@@ -11,6 +11,7 @@ public interface UsuarioDao {
 	void guardarUsuario(Usuario usuario);
 	Usuario buscarUsuario(Usuario usuario);
 	//void actualizarUsuario(Usuario personaje);
+	Usuario buscarUsuarioPorId(String id);
 	
 	
 }

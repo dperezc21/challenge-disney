@@ -19,6 +19,7 @@ async function guardarPersonaje(){
     },
     body: JSON.stringify(datos)
   });
+  alert("Registro Guardado Exitosamente");
   
   //let inputs = '<h3>Subir fotografia de personaje</h3> <div class="col-md-6"><div class="form-floating mb-3 mb-md-0"><input class="form-control" name="imagen" id="inputImagen" type="file" /></div></div></div><div class="mt-4 mb-0"><div class="d-grid"><a class="btn btn-primary btn-block" onclick="guardarImagen()" href="#">Guardar Registro</a></div></div>';
   

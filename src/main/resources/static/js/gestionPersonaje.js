@@ -33,18 +33,18 @@ async function personajes(){
 
 
 async function eliminarPersonaje(id){
-	if(confirm("¿Esta seguro que quiere eliminar el personaje seleccionado?")){
+	if(confirm("¿esta seguro que desea eliminar el personaje seleccionado")){
 		const response = await fetch('characters/eliminar/'+id, {
     	method: 'DELETE',
 	    headers: {
 	      'Accept': 'application/json',
-	      'Content-Type': 'application/json',
-	      'Authentication':localStorage.token
+	      'Content-Type': 'application/json'
 	    },
 	    
 	  });
-	  location.reload();
-	}  
+		location.reload();
+	}
+	  
 }
 
 
@@ -83,7 +83,6 @@ async function buscarPersonajePor(){
 			if( opcion == "Nombre"){
 				buscarPorNombre(dato);
 			}else if(opcion == "Edad"){
-				console.log("aqui");
 				buscarPorEdad(dato);
 			}
 			
@@ -100,7 +99,8 @@ async function buscarPorNombre(nombre){
     	method: 'GET',
 	    headers: {
 	      'Accept': 'application/json',
-	      'Content-Type': 'application/json'
+	      'Content-Type': 'application/json',
+	      //'Authentication': localStorage.token
 	    },
 	    
 	  });
@@ -118,19 +118,17 @@ async function buscarPorEdad(edad){
 	    headers: {
 	      'Accept': 'application/json',
 	      'Content-Type': 'application/json'
+	      //'Authentication':localStorage.token
 	    },
 	  });
 
 	const personajes = await responsePersonajes.json();
-	console.log(personajes);
 	
-	document.querySelector("#tablaPersonajes tbody").innerHTML = listarPersonajes(personajes);
+	console.log(personajes);
+	 
+		document.querySelector("#tablaPersonajes tbody").innerHTML = listarPersonajes(personajes);
+		
+	
 	
 }
-
-
-
-
-
-
 

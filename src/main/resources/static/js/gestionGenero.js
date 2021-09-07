@@ -15,8 +15,7 @@ async function get(){
     method: 'GET',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      
+      'Content-Type': 'application/json'
     },
     
   });
@@ -30,7 +29,7 @@ async function get(){
 
 
 async function eliminarGenero(id){
-	if(confirm("¿Esta seguro que quiere eliminar el Generos seleccionado?")){
+	if(confirm("¿Esta seguro que quiere eliminar el Genero seleccionado?")){
 		const response = await fetch('generos/eliminar/'+id, {
     	method: 'DELETE',
 	    headers: {
@@ -51,9 +50,9 @@ function listarGeneros(genero){
 		
 		let botonEliminar = '<a href="#" onclick="eliminarGenero('+i.id+')">Eliminar</a>';
 		let g = '<tr><td>'+i.id
-						+'</td><td>'+i.titulo
-						+'</td><td>'+i.calificacion
-						+'</td><td></td><td>'+botonEliminar+'</td></tr>';
+						+'</td><td>'+i.nombre
+						+'</td><td>'+i.imagen
+						+'</td><td>'+botonEliminar+'</td></tr>';
 						
 		lista += g;
 	}

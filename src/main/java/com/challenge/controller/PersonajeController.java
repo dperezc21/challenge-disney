@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.challenge.dao.personaje.PersonajeDao;
+import com.challenge.dao.usuario.UsuarioDao;
 import com.challenge.disney.models.Personaje;
+import com.challenge.disney.models.Usuario;
 import com.challenge.disney.utils.JWTUtil;
 
 @RestController
@@ -25,6 +27,7 @@ public class PersonajeController {
 	
 	@Autowired
 	private PersonajeDao inyeccion; 
+	
 	
 	@Autowired
 	private JWTUtil jwt;
@@ -34,14 +37,9 @@ public class PersonajeController {
 		return inyeccion.listarPersonajes();
 	}
 	
-	@RequestMapping(value = "characters/eliminar/{id}")
-	public void eliminarPersonaje(@RequestHeader(name = "Authorization") String token, @PathVariable String id) {
-		String password = jwt.getValue(token);
-		
-		if (password != null) {
-			inyeccion.eliminarPersonaje(id);
-		}
-		
+	@RequestMapping(value = "characters/eliminar/{id}", method = RequestMethod.DELETE)
+	public void eliminarPersonaje( @PathVariable String id) {
+		inyeccion.eliminarPersonaje(id);
 	}
 	
 	
@@ -71,8 +69,10 @@ public class PersonajeController {
 	
 	@GetMapping("/characters/searchByAge")
 	@ResponseBody
-	public List<Personaje> buscarPersonajePorEdad(@RequestParam String age){
+	public List<Personaje> buscarPersonajePorEdad( @RequestParam String age){
+		
 		return inyeccion.buscarPersonajePor("edad", age);
+		
 	}
 	
 	

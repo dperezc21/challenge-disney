@@ -12,5 +12,7 @@ public interface PeliculasSeriesDao {
 	List<PeliculaSerie> buscarPeliculaSeriePorId(String id);
 	void actualizarPeliculaSerie(PeliculaSerie peliculaSerie);
 	List<PeliculaSerie> buscarPeliculaSeriePorNombre( String valor );
+	List<PeliculaSerie> getAsc();
+	List<PeliculaSerie> getDesc();
 	
 }

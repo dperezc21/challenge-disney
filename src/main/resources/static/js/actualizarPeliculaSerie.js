@@ -24,6 +24,22 @@ async function buscar(){
 }
 
 
+async function buscarDesc(){
+	
+	const request = await fetch('movies/desc', {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    //body: JSON.stringify({"id":id})
+  });
+  const personaje = await request.json();
+	console.log(personaje);
+	//mostrarPersonaje(personaje[0]);
+}
+
+
 function mostrarPersonaje(personaje){
 	for(let i in personaje){
 		console.log(i);

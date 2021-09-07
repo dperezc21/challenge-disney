@@ -75,8 +75,10 @@ async function buscarPersonajePor(){
 			let opcion = select.options[i].value;
 			if( opcion == "Titulo"){
 				buscarPorNombre(dato);
-			}else if(opcion == "Edad"){
-				pass;
+			}else if(opcion == "Id, Orden Desc"){
+				buscarPorOrdenDescOAsc("desc");
+			}else if (opcion == "Id, Orden Asc"){
+				buscarPorOrdenDescOAsc("asc");
 			}
 			
 		}
@@ -89,6 +91,24 @@ async function buscarPersonajePor(){
 
 async function buscarPorNombre(nombre){
 	const requestPeliculasSeries = await fetch('/movies/buscarPorNombre?name='+nombre, {
+    	method: 'GET',
+	    headers: {
+	      'Accept': 'application/json',
+	      'Content-Type': 'application/json'
+	    },
+	    
+	  });
+
+	const peliculasSeries = await requestPeliculasSeries.json();
+	//console.log(peliculasSeries,"hola");
+	
+	document.querySelector("#tablaPersonajes tbody").innerHTML = listarPeliculasSeries(peliculasSeries);
+	
+}
+
+
+async function buscarPorOrdenDescOAsc(orden){
+	const requestPeliculasSeries = await fetch('movies/'+orden, {
     	method: 'GET',
 	    headers: {
 	      'Accept': 'application/json',
